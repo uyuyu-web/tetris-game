@@ -1,0 +1,84 @@
+/* =================Hold枠（左側）================= */
+.tetris-hold {
+  position: fixed;
+  left: 30vw;
+  top: 20%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size:1.2vw;
+  color: #030303;
+  text-align: center;
+  z-index: 10;
+}
+
+.tetris-hold canvas {
+  display: block;
+  margin: 5px auto 0 auto;
+  width: 6vw;
+  height: 6vw;
+  border: 2px solid #fff;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+/* =================Next枠（右側）================= */
+.tetris-next {
+  position: fixed;
+  right: 30vw;
+  top: 20%;
+  transform: translateY(-50%);
+  font-family: monospace;
+  font-size: 1.2vw;
+  color: #050505;
+  text-align: center;
+  z-index: 10;
+}
+
+.tetris-next canvas {
+  display: block;
+  margin: 5px auto 0 auto;
+  width: 6vw;
+  height: 6vw;
+  border: 2px solid #fff;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+/* =================ゲームオーバー================= */
+.tetris-gameover-grid {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: rgba(0,0,0,0.6);
+  z-index:50;
+  pointer-events:auto;
+}
+
+.tetris-gameover-content {
+  text-align:center;
+}
+
+.tetris-gameover-title {
+  font-size:60px;
+  margin-bottom:30px;
+  color:#ff5555;
+  text-shadow:2px 2px 8px #000;
+}
+
+.tetris-play-again {
+  font-size:20px;
+  padding:12px 24px;
+  border-radius:6px;
+  border:none;
+  background-color:#a8e05f;
+  color:#000;
+  cursor:pointer;
+  font-family:monospace;
+}
+
+.tetris-play-again:hover {
+  transform: scale(1.05);
+  background-color: #8cd34b;
+}

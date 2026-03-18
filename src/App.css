@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;           /* ページ高さを画面サイズに固定 */
+  overflow: hidden;        /* スクロール禁止 */
+  font-family: monospace;  /* 全体フォント */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* canvas を画面いっぱいに表示 */
+.tetris-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;   /* canvas はクリック無効 */
+  background-color: #111; /* 背景黒 */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Play ボタン */
+.tetris-play-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Press Start 2P", monospace;
+  font-size: 20px;
+  padding: 16px 32px;
+  background-color: #a8e05f;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 60;           /* canvas より前面 */
+  pointer-events: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tetris-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  background-color: #8cd34b;
+}
+
+/* GameOver グリッド画面 */
+.tetris-gameover-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(rgba(255,0,0,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,0,0.2) 1px, transparent 1px);
+  background-size: 30px 30px; /* グリッドサイズ */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: "Press Start 2P", monospace;
+  font-size: 60px;
+  color: red;
+  z-index: 50;
+  pointer-events: auto; /* ボタン押せるように */
 }
 
-.App-link {
-  color: #61dafb;
+/* Hold 左側 */
+.tetris-hold {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: monospace;
+  font-size: 14px;
+  z-index: 10;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tetris-hold canvas {
+  display: block;
+  margin: 5px auto 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+}
+
+/* Next 右側 */
+.tetris-next {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: monospace;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.tetris-next canvas {
+  display: block;
+  margin: 5px auto 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+}
+
+/* 操作説明 */
+.tetris-controls {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  font-family: monospace;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  z-index: 20;
+  pointer-events: none;
+  text-align: center;
+  line-height: 1.5;
 }
